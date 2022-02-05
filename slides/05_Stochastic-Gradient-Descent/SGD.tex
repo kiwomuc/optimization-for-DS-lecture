@@ -41,7 +41,7 @@
           \end{equation}
     \item evaluating $\nabla f$ can be \textbf{expensive} if $n$ is large
   \end{itemize}
-  
+
 \end{frame}
 
 
@@ -178,7 +178,7 @@
 
   By convexity we have that
   \begin{itemize}
-    \item $B_{GD}^2 \approx \left\Vert \frac{1}{n}\sum_{i=1}^{n}\nabla f_i(x) \right\Vert^2 \le \frac{1}{n} \sum_{i=1}^{n} \Vert \nabla f_i(x) \Vert^2 \approx B_{SGD}^2$
+    \item $B_{BG}^2 \approx \left\Vert \frac{1}{n}\sum_{i=1}^{n}\nabla f_i(x) \right\Vert^2 \le \frac{1}{n} \sum_{i=1}^{n} \Vert \nabla f_i(x) \Vert^2 \approx B_{SGD}^2$
     \item but usually comparable
   \end{itemize}
 \end{frame}
@@ -235,7 +235,9 @@
       &x_{k+1} = x_k - \alpha g_k.
     \end{align}
   \end{block}
-  We can get the same $\mathcal{O}(\epsilon^{-2})$ complexity. Smoothness did provide any benefit (in terms of rate).
+  We can get the same $\mathcal{O}(\epsilon^{-2})$ complexity. Smoothness did not provide any benefit (in terms of rate).
+  \textcolor{gray}{With a more refined analysis one can get better dependence on constants.}
+
 \end{frame}
 
 
@@ -245,8 +247,12 @@
   \begin{itemize}
     \item Previous proof can be extended (trivially) to the constrained setting
     \item with same complexity $\mathcal{O}(\epsilon^{-2})$
-    \item but (of course) additionaly
+    \item but (of course) with an additional projection
+          \begin{equation}
+            x_{k+1} = \Pi_C(x_k - \alpha \nabla f_i (x_k))
+          \end{equation}
   \end{itemize}
+
 
 \end{frame}
 
